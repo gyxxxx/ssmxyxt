@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.GuizixinxiMapper">
+	<resultMap id="BaseResultMap" type="com.entity.Guizixinxi">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="huoguibianhao" jdbcType="VARCHAR" property="huoguibianhao" />		<result column="guige" jdbcType="VARCHAR" property="guige" />		<result column="weizhi" jdbcType="VARCHAR" property="weizhi" />
+		<result column="addtime" jdbcType="VARCHAR" property="addtime" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, huoguibianhao,guige,weizhi, addtime
+	</sql>
+	<select id="quchongGuizixinxi" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from guizixinxi
+		where huoguibianhao = #{huoguibianhao,jdbcType=VARCHAR} limit 0,1
+	</select>
+	<select id="getCount" resultType="int" parameterType="java.util.Map">
+		select count(*) from guizixinxi where 1=1
+		<if test="huoguibianhao!=null">and huoguibianhao like
+			concat('%',#{huoguibianhao,jdbcType=VARCHAR},'%')</if>		<if test="guige!=null">and guige like concat('%',#{guige,jdbcType=VARCHAR},'%')		</if>		<if test="weizhi!=null">and weizhi like concat('%',#{weizhi,jdbcType=VARCHAR},'%')		</if>
+	</select>
+	<select id="getAll" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from guizixinxi where 1=1
+		<if test="huoguibianhao!=null">
+			and huoguibianhao =#{huoguibianhao}
+		</if>
+	</select>
+
+	<select id="getsyguizixinxi1" resultMap="BaseResultMap"
+		parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from guizixinxi where 1=1
+		limit 0,5
+	</select>
+	<select id="getsyguizixinxi2" resultMap="BaseResultMap"
+		parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from guizixinxi where 1=1
+		limit 0,5
+	</select>
+	<select id="getsyguizixinxi3" resultMap="BaseResultMap"
+		parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from guizixinxi where 1=1
+		limit 0,5
+	</select>
+
+	<select id="getByPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from guizixinxi where 1=1
+		<if test="huoguibianhao!=null">and huoguibianhao like
+			concat('%',#{huoguibianhao,jdbcType=VARCHAR},'%')</if>		<if test="guige!=null">and guige like concat('%',#{guige,jdbcType=VARCHAR},'%')		</if>		<if test="weizhi!=null">and weizhi like concat('%',#{weizhi,jdbcType=VARCHAR},'%')		</if>		order by id desc
+		<if test="pageno!=null and pageSize!=null">
+			limit #{pageno},#{pageSize}
+		</if>
+	</select>
+
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from guizixinxi
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from guizixinxi
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.entity.Guizixinxi">
+		insert into guizixinxi (id, huoguibianhao,guige,weizhi, addtime)
+		values (#{id,jdbcType=INTEGER},
+		#{huoguibianhao,jdbcType=VARCHAR},#{guige,jdbcType=VARCHAR},#{weizhi,jdbcType=VARCHAR},
+		#{addtime,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.entity.Guizixinxi">
+		insert into guizixinxi
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="huoguibianhao != null"> huoguibianhao, </if>			<if test="guige != null"> guige, </if>			<if test="weizhi != null"> weizhi, </if>
+			<if test="addtime != null">
+				addtime,
+			</if>
+
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="huoguibianhao != null"> #{huoguibianhao,jdbcType=VARCHAR},</if>			<if test="guige != null"> #{guige,jdbcType=VARCHAR},</if>			<if test="weizhi != null"> #{weizhi,jdbcType=VARCHAR},</if>
+			<if test="addtime != null">
+				#{addtime,jdbcType=VARCHAR},
+			</if>
+
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.entity.Guizixinxi">
+		update guizixinxi
+		<set>
+			<if test="huoguibianhao != null"> huoguibianhao = #{huoguibianhao,jdbcType=VARCHAR},</if>			<if test="guige != null"> guige = #{guige,jdbcType=VARCHAR},</if>			<if test="weizhi != null"> weizhi = #{weizhi,jdbcType=VARCHAR},</if>
+			<if test="addtime != null">
+				addtime = #{addtime,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+
+
+	<update id="updateByPrimaryKey" parameterType="com.entity.Guizixinxi">
+		update guizixinxi
+		set huoguibianhao = #{huoguibianhao,jdbcType=VARCHAR},guige =
+		#{guige,jdbcType=VARCHAR},weizhi = #{weizhi,jdbcType=VARCHAR}, addtime
+		= #{addtime,jdbcType=VARCHAR} where id = #{id,jdbcType=INTEGER}
+	</update>
+</mapper>

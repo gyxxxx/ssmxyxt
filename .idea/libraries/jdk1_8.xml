@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="jdk1.8">
+    <CLASSES>
+      <root url="file://D:/JDK/jdk1.8.0_111" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
