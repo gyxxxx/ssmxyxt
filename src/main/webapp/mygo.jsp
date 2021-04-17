@@ -6,6 +6,8 @@
 </head>
 <body>
 	<%
+
+
 if(request.getSession().getAttribute("cx").equals("超级管理员") || request.getSession().getAttribute("cx").equals("普通管理员")){response.sendRedirect("left_guanliyuan.jsp");}if(request.getSession().getAttribute("cx").equals("注册用户")){response.sendRedirect("left_zhuceyonghu.jsp");}
  %>
 </body>

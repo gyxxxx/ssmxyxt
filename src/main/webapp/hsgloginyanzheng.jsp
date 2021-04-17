@@ -15,13 +15,10 @@
   String uid=request.getParameter("username");
  String pwd=request.getParameter("pwd");
  String cx=request.getParameter("cx");
-
- System.out.println(uid + "====" + pwd + "====" + cx);
  String sql="";
  if(cx.equals("管理员")){sql="select * from allusers where username='"+uid+"' and pwd='"+pwd+"'";}
  if(cx.equals("注册用户")){sql="select * from yonghuzhuce where yonghuming='"+uid+"' and mima='"+pwd+"' and issh='是'";}
-
- ResultSet RS_result=connDbBean.executeQuery("select * from allusers where username ='gyx' and pwd='1234'");
+ ResultSet RS_result=connDbBean.executeQuery(sql);
   if(!RS_result.next())
 {
 	out.print("<script>alert('你输入的用户不存在或密码错误,请重新登录!');window.history.go(-1);</script>");

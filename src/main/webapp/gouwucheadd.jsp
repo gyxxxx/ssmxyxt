@@ -39,7 +39,7 @@ if(request.getSession().getAttribute("username")==null)
 <script language="javascript">
 function checkform()
 {
-	
+	alert("请确保衣兜已清理干净，避免影响洗衣效果！");
 }
 function gow()
 {
