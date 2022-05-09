@@ -25,10 +25,9 @@
 	<import resource="classpath:spring-datasource.xml" />
 	<import resource="classpath:spring-mybatis.xml" />
 	<import resource="classpath:spring-mvc.xml" />
-	<!-- <import resource="classpath:spring-shiro.xml"/> -->
-
+	 <import resource="classpath:spring-rabbitmq.xml"/>
 	<!-- 启用AOP注解的应用方式 -->
-	<!-- <aop:aspectj-autoproxy /> -->
+	 <aop:aspectj-autoproxy proxy-target-class="true"/>
 	
 	<!-- 配置事务类 -->
 	<bean id="transactionManager"
@@ -46,11 +45,11 @@
 	</tx:advice>
 
 	<!-- 配置切点 -->
-	<aop:config>
+<!-- 	<aop:config>
 		<aop:pointcut expression="execution(* com.server.impl.*.*(..))"
 			id="mycut" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="mycut" />
-	</aop:config>
+	</aop:config> -->
 	<!-- 支持上传文件 -->
 	<!-- <bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" /> -->
