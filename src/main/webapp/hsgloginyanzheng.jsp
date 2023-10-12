@@ -1,4 +1,4 @@
-﻿<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ page language="java" import="java.sql.*"%>
 <jsp:useBean id="connDbBean" scope="page" class="com.util.db" />
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -12,14 +12,14 @@
 <body>
 	<%
  
- String uid=request.getParameter("username");
+  String uid=request.getParameter("username");
  String pwd=request.getParameter("pwd");
  String cx=request.getParameter("cx");
  String sql="";
  if(cx.equals("管理员")){sql="select * from allusers where username='"+uid+"' and pwd='"+pwd+"'";}
- if(cx.equals("注册用户")){sql="select * from yonghuzhuce where yonghuming='"+uid+"' and mima='"+pwd+"' and issh='是'";}
+ if(cx.equals("注册用户")){sql="select * from yonghuzhuce where yonghuming='"+uid+"' and mima='"+pwd+"' and issh='是'";}
  ResultSet RS_result=connDbBean.executeQuery(sql);
- if(!RS_result.next())
+  if(!RS_result.next())
 {
 	out.print("<script>alert('你输入的用户不存在或密码错误,请重新登录!');window.history.go(-1);</script>");
 }
@@ -41,8 +41,8 @@ else{
 	 {
 		 response.sendRedirect("index.do");	  
 	 }
-	} 
-RS_result.close();
+	}  
+RS_result.close(); 
 
  %>
 </body>

@@ -80,7 +80,7 @@
 						value=返回 onClick="javascript:history.back()" /> <input
 						type=button name=Submit52 value=打印
 						onClick="javascript:window.print()" /> <input type=button
-						name=Submit53 value=放入购物车
+						name=Submit53 value=即时预约
 						onClick="javascript:location.href='gouwucheadd.jsp?id=<%=request.getParameter("id")%>';" />
 						<!--jixaaxnnxiu--></td>
 				</tr>
